@@ -11,11 +11,11 @@ const BlogList = () => {
             .then(data => setBlog(data))
     }, [])
 
-   
     return (
         <div className='my-10 '>
-            <h1>Blog List Page : {blog.length}</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates asperiores neque, qui cum nisi odit unde non eum distinctio veniam!</p>
+             <p className='text-2xl '>Blogs List Page</p>
+            <h1 className='my-2'>Total Blogs: {blog.length}</h1>
+           
             <table class="table w-full mx-auto my-3 ">
                 <thead>
                     <tr>
@@ -33,7 +33,7 @@ const BlogList = () => {
                         <tbody key={index}>
                             <tr>
                                 <td >{index+1} </td>
-                                <td >{p.title} </td>
+                                <td className='hover:'>{p.title} </td>
                                 <td title={p.content.length > 15 ? p.content : ''}>{p.content.length > 15 ? p.content.slice(0, 15) + '...' : p.content}</td>
                                 <td>{p.date}</td>
                             </tr>
@@ -45,7 +45,7 @@ const BlogList = () => {
             </table>
             <label onClick={()=>setM(true)} for="my-modal-6" class="btn modal-button ">Add new post</label>
             {
-                m && <Modal/>
+                m && <Modal setM={setM} />
             }
         </div>
     );
